@@ -30,11 +30,11 @@ $mail->SetFrom = "";     // Enter Your Email Address Here
 // $mail->addAddress('receiver1@gmail.com');   // Set the E-mail where you want to send E-mail
 // $mail->addAddress('receiver2@gfg.com');  // Set the E-mail where you want to send E-mail for second receiver
 
-$mail->isHTML(true); // this is used to send html tags in   
+$mail->isHTML(true); // this is used to send html tags in message 
 
 if(isset($_POST['sendmail'])){
 
-    $target = 'images/'.basename($_FILES['myfile']['name']); // first save that image
+    $target = './images/'.basename($_FILES['myfile']['name']); // first save that image
 
     $file = $_FILES['myfile']['name'];
     
@@ -47,7 +47,7 @@ if(isset($_POST['sendmail'])){
 
     $mail->Subject = $_POST['subject'];
     $mail->Body = $_POST['body'];
-    $mail->addAttachment('images/'.$_FILES['myfile']['name'], $_FILES['myfile']['name']); // this is used to send file | image to email
+    $mail->addAttachment('./images/'.$_FILES['myfile']['name'], $_FILES['myfile']['name']); // this is used to send file | image to email
 
     $mail->addAddress("reciever1@gmail.com");
     $mail->send();
